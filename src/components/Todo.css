@@ -1,0 +1,30 @@
+.single-todo {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0.5rem;
+  align-items: center;
+  margin: 1rem auto;
+  width: 500px;
+  height: 3rem;
+  gap: 0.5rem;
+  background-color: #aca1c3;
+  border-radius: 5px;
+}
+
+.single-todo__checkbox {
+  font-size: 1rem;
+}
+
+.single-todo__input {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.single-todo__delete {
+  background-color: #f3c06c;
+  border: unset;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
