@@ -1,23 +1,22 @@
-import { use, useRef, useState } from "react";
-import "./NewNote.css";
+import { useState } from "react";
+import "./TodoInput.css";
 import { Todo } from "./Todo";
 
-export function NewNote(prop) {
+export function TodoInput(props) {
   const [inputValue, setInputValue] = useState("");
 
   function handleInputChange(x) {
-    console.log(x.target.value);
     let input = x.target.value;
     setInputValue(input);
-    console.log(inputValue);
   }
+
   return (
     <div className="new-note">
       <input className="new-note__input" onChange={handleInputChange}></input>
       <button
         className="new-note__button"
         onClick={() => {
-          addNote(inputValue);
+          props.onAdd(inputValue);
         }}
       >
         Add
@@ -28,6 +27,7 @@ export function NewNote(prop) {
 
 export function addNote(newValue) {
   console.log("function addNote fired");
+  //setTodo.push(newValue);
   //alert('button "add" clicked');
-  Todo(newValue);
+  //Todo(newValue);
 }

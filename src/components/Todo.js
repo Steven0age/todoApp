@@ -1,12 +1,10 @@
 import { useState } from "react";
 import "./Todo.css";
 
-export function Todo({ input, funktion }) {
-  const [currentTodos, setTodos] = useState(["Bügeln", "Wäsche waschen"]);
-  //console.log("currentTodos =", currentTodos);
-  //state mit Anzahl der TODO's
-  //map Funktion, die für jedes Todo eine neue Cart rendert
-  let newHtml = currentTodos.map((todo) => {
+export function Todo({ todos, funktion }) {
+  //const [currentTodos, setTodos] = useState(["Bügeln", "Wäsche waschen"]);
+
+  let newHtml = todos.map((todo) => {
     return (
       <div key={todo} className="single-todo">
         <input className="single-todo__checkbox" type="checkbox"></input>
@@ -17,7 +15,7 @@ export function Todo({ input, funktion }) {
       </div>
     );
   });
-  console.log("newHtml =", newHtml);
+  //console.log("newHtml =", newHtml);
   return newHtml;
 }
 
