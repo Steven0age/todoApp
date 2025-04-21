@@ -28,7 +28,7 @@ function App() {
       <TodoInput onAdd={addButtonClicked} />
       <Todo
         todos={currentTodos}
-        funktion={(event) => {
+        handleDelete={(event) => {
           deleteButtonClicked(event);
         }}
       />
