@@ -1,13 +1,19 @@
 import { useState } from "react";
 import "./App.css";
-import { TodoInput, addNote } from "./TodoInput";
-import { Todo, deleteTodo } from "./Todo";
+import { TodoInput } from "./TodoInput";
+import { Todo } from "./Todo";
 
 function App() {
   const [currentTodos, setTodos] = useState([]);
 
   function addButtonClicked(value) {
+    if (!value) {
+      alert("Bitte ein TODO eingeben");
+      return;
+    }
+
     setTodos([...currentTodos, value]);
+
     let inputEl = document.querySelector(".new-note__input");
     inputEl.value = "";
     inputEl.focus();

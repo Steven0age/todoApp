@@ -1,12 +1,11 @@
 import { useState } from "react";
 import "./TodoInput.css";
-import { Todo } from "./Todo";
 
 export function TodoInput(props) {
   const [inputValue, setInputValue] = useState("");
 
-  function handleInputChange(x) {
-    let input = x.target.value;
+  function handleInputChange(event) {
+    let input = event.target.value;
     setInputValue(input);
   }
 

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./Todo.css";
 
 export function Todo(props) {
