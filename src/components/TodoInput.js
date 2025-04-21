@@ -24,10 +24,3 @@ export function TodoInput(props) {
     </div>
   );
 }
-
-export function addNote(newValue) {
-  console.log("function addNote fired");
-  //setTodo.push(newValue);
-  //alert('button "add" clicked');
-  //Todo(newValue);
-}

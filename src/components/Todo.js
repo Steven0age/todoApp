@@ -1,24 +1,39 @@
 import { useState } from "react";
 import "./Todo.css";
 
-export function Todo({ todos, funktion }) {
-  //const [currentTodos, setTodos] = useState(["Bügeln", "Wäsche waschen"]);
-
-  let newHtml = todos.map((todo) => {
+export function Todo(props) {
+  let newHtml = props.todos.map((todo) => {
+    const id = todo + Math.random();
     return (
-      <div key={todo} className="single-todo">
-        <input className="single-todo__checkbox" type="checkbox"></input>
-        <p className="single-todo__input">{todo}</p>
-        <button className="single-todo__delete" onClick={funktion}>
+      <div id={id} key={id} className="single-todo">
+        <input
+          onChange={() => {
+            markedAsDone(id);
+          }}
+          className="single-todo__checkbox"
+          type="checkbox"
+        ></input>
+        <p className="single-todo__description">{todo}</p>
+        <button
+          className="single-todo__delete-btn"
+          data-value={todo}
+          onClick={props.funktion}
+        >
           Löschen
         </button>
       </div>
     );
   });
-  //console.log("newHtml =", newHtml);
   return newHtml;
 }
 
-export function deleteTodo(id) {
-  alert(id, "wurde gelöscht");
+function markedAsDone(id) {
+  let inputEl = document.getElementById(id).querySelector("input");
+  let paragraphEl = document.getElementById(id).querySelector("p");
+
+  if (inputEl.checked) {
+    paragraphEl.classList.add("single-todo__input--crossed");
+  } else {
+    paragraphEl.classList.remove("single-todo__input--crossed");
+  }
 }

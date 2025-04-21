@@ -15,12 +15,16 @@
   font-size: 1rem;
 }
 
-.single-todo__input {
+.single-todo__description {
   flex-grow: 1;
   text-align: left;
 }
 
-.single-todo__delete {
+.single-todo__input--crossed {
+  text-decoration: line-through;
+}
+
+.single-todo__delete-btn {
   background-color: #f3c06c;
   border: unset;
   cursor: pointer;
