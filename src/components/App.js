@@ -6,9 +6,21 @@ import { Todo } from "./Todo";
 function App() {
   const [currentTodos, setTodos] = useState([]);
 
+  function checkboxClicked(todoID) {
+    let index = currentTodos.findIndex((value) => value === todoID);
+    let newArray = [...currentTodos];
+
+    if (currentTodos[index].done === true) {
+      newArray[index].done = false;
+    } else {
+      newArray[index].done = true;
+    }
+    setTodos(newArray);
+  }
+
   function addButtonClicked(value) {
     if (!value) {
-      alert("Bitte ein TODO eingeben");
+      alert("Bitte ein Todo eingeben");
       return;
     }
 
@@ -21,7 +33,7 @@ function App() {
 
   function deleteButtonClicked(btnEvent) {
     let findValue = btnEvent.target.getAttribute("data-value");
-    let index = currentTodos.findIndex((value) => value == findValue);
+    let index = currentTodos.findIndex((value) => value === findValue);
 
     let newArray = [...currentTodos];
     newArray.splice(index, 1);
@@ -34,6 +46,10 @@ function App() {
       <TodoInput onAdd={addButtonClicked} />
       <Todo
         todos={currentTodos}
+        todoDone={currentTodos}
+        handleChange={(index) => {
+          checkboxClicked(index);
+        }}
         handleDelete={(event) => {
           deleteButtonClicked(event);
         }}

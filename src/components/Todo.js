@@ -1,24 +1,33 @@
 import "./Todo.css";
 
 export function Todo(props) {
-  if (props.todos.length == 0) {
+  if (props.todos.length === 0) {
     return <div className="single-todo">Keine Todos</div>;
   }
   let newHtml = props.todos.map((todo) => {
-    const id = todo + Math.random();
+    const id = todo.text + Math.random();
     return (
       <div id={id} key={id} className="single-todo">
         <input
           onChange={() => {
-            markedAsDone(id);
+            props.handleChange(todo);
           }}
           className="single-todo__checkbox"
           type="checkbox"
+          checked={todo.done}
         ></input>
-        <p className="single-todo__description">{todo}</p>
+        <p
+          className={
+            todo.done
+              ? "single-todo__description single-todo__input--crossed"
+              : "single-todo__description"
+          }
+        >
+          {todo.text}
+        </p>
         <button
           className="single-todo__delete-btn"
-          data-value={todo}
+          data-value={todo.text}
           onClick={props.handleDelete}
         >
           Löschen
@@ -27,15 +36,4 @@ export function Todo(props) {
     );
   });
   return newHtml;
-}
-
-function markedAsDone(id) {
-  let inputEl = document.getElementById(id).querySelector("input");
-  let paragraphEl = document.getElementById(id).querySelector("p");
-
-  if (inputEl.checked) {
-    paragraphEl.classList.add("single-todo__input--crossed");
-  } else {
-    paragraphEl.classList.remove("single-todo__input--crossed");
-  }
 }

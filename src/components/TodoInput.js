@@ -15,7 +15,7 @@ export function TodoInput(props) {
       <button
         className="new-note__button"
         onClick={() => {
-          props.onAdd(inputValue);
+          props.onAdd({ text: inputValue, done: false });
         }}
       >
         Add
