@@ -4,7 +4,7 @@ export function Todo(props) {
   if (props.todos.length === 0) {
     return <div className="single-todo">Keine Todos</div>;
   }
-  let newHtml = props.todos.map((todo) => {
+  let newHtml = props.todos.map((todo, index) => {
     const id = todo.text + Math.random();
     return (
       <div id={id} key={id} className="single-todo">
@@ -27,7 +27,7 @@ export function Todo(props) {
         </p>
         <button
           className="single-todo__delete-btn"
-          data-value={todo.text}
+          data-index={index}
           onClick={props.handleDelete}
         >
           Löschen
