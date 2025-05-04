@@ -21,15 +21,16 @@ function App() {
   }
 
   function addButtonClicked(value) {
-    if (!value) {
+    if (!inputValue) {
       alert("Bitte ein Todo eingeben");
       return;
     }
 
-    setTodos([...currentTodos, value]);
+    setTodos([...currentTodos, { text: inputValue, done: false }]);
 
     let inputEl = document.querySelector(".new-note__input");
     inputEl.value = "";
+    setInputValue("");
     inputEl.focus();
   }
 
@@ -42,9 +43,17 @@ function App() {
     setTodos(newArray);
   }
 
+  const [inputValue, setInputValue] = useState("");
+
+  function handleInputChange(event) {
+    const input = event.target.value;
+    console.log(input);
+    setInputValue(input);
+  }
+
   return (
     <div className="App">
-      <TodoInput onAdd={addButtonClicked} />
+      <TodoInput onAdd={addButtonClicked} changeEvent={handleInputChange} />
       <Todo
         todos={currentTodos}
         todoDone={currentTodos}
