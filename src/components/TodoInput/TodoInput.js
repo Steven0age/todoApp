@@ -5,7 +5,7 @@ export function TodoInput(props) {
   const [inputValue, setInputValue] = useState("");
 
   function handleInputChange(event) {
-    let input = event.target.value;
+    const input = event.target.value;
     setInputValue(input);
   }
 
